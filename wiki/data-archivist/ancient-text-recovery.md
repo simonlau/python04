@@ -1,7 +1,7 @@
 # Ancient Text Recovery (Exercise 0)
 
-> Sources: Data Archivist project (python04), 2026-10-30
-> Raw: [2026-10-30-data-archivist-python04](../../raw/data-archivist/2026-10-30-data-archivist-python04.md)
+> Sources: Data Archivist project (python04), 2026-10-30; Real Python, James Mertz, 2019-02-20
+> Raw: [2026-10-30-data-archivist-python04](../../raw/data-archivist/2026-10-30-data-archivist-python04.md); [2026-10-30-reading-and-writing-files-in-python](../../raw/python-file-io/2026-10-30-reading-and-writing-files-in-python.md)
 > Updated: 2026-10-30
 
 ## Overview
@@ -23,6 +23,15 @@ import sys, sys.argv, len(), open(), import typing, typing.IO, io.read(), io.clo
 
 What is the type of the data returned by open()?
 
+`open()` returns a file object (an object exposing a file-oriented API with methods such as `read()` or `write()`). For text files this is a `TextIOWrapper`.
+
+## Reading details
+
+- `.read(size=-1)` — reads the entire file when no argument (or `None`/`-1`) is passed.
+- `.readline(size=-1)` — reads at most `size` characters from the line, continuing to end of line then wrapping around.
+- `.readlines()` — reads the remaining lines and returns them as a list.
+- Iterating directly over the file object (`for line in reader`) is the more Pythonic, memory-efficient approach.
+
 ## Example output
 
 Reading ancient_fragment.txt displays:
@@ -39,3 +48,4 @@ An unreadable file produces: Error opening file '/etc/master.passwd': [Errno 13]
 
 - [Archive Creation](archive-creation.md) — builds on this exercise
 - [Data Archivist Project Overview](data-archivist-overview.md)
+- [Reading and Writing Files in Python](../python-file-io/reading-writing-files.md)

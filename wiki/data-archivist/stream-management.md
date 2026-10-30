@@ -1,7 +1,7 @@
 # Stream Management (Exercise 2)
 
-> Sources: Data Archivist project (python04), 2026-10-30
-> Raw: [2026-10-30-data-archivist-python04](../../raw/data-archivist/2026-10-30-data-archivist-python04.md)
+> Sources: Data Archivist project (python04), 2026-10-30; Real Python, James Mertz, 2019-02-20
+> Raw: [2026-10-30-data-archivist-python04](../../raw/data-archivist/2026-10-30-data-archivist-python04.md); [2026-10-30-reading-and-writing-files-in-python](../../raw/python-file-io/2026-10-30-reading-and-writing-files-in-python.md)
 > Updated: 2026-10-30
 
 ## Overview
@@ -28,3 +28,4 @@ A missing file foo produces: [STDERR] Error opening file 'foo': [Errno 2] No suc
 
 - [Archive Creation](archive-creation.md) — prerequisite exercise
 - [Data Archivist Project Overview](data-archivist-overview.md)
+- [Reading and Writing Files in Python](../python-file-io/reading-writing-files.md)
