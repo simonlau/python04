@@ -3,7 +3,7 @@
 import sys
 
 
-def main():
+def main() -> None:
     if len(sys.argv) == 1:
         print("Usage: ft_ancient_text.py <file>")
         return
@@ -12,11 +12,11 @@ def main():
     print(f"Accessing file '{file_name}'")
 
     try:
-        with open(file_name, 'r') as reader:
-            print('-' * 3)
+        with open(file_name, mode="r", encoding="utf-8") as reader:
+            print("-" * 3)
             for line in reader:
-                print(line, end='')
-            print('-' * 3)
+                print(line, end="")
+            print("-" * 3)
     except FileNotFoundError as error:
         print(f"Error opening file '{file_name}': {error}")
     except PermissionError as error:
@@ -25,5 +25,5 @@ def main():
         print(f"File '{file_name}' closed.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
