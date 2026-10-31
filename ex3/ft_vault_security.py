@@ -33,7 +33,7 @@ def secure_archive(
                 return True, "Content successfully written to file"
             except OSError as error:
                 return False, f"{error}"
-            except UnicodeDecodeError as error:
+            except UnicodeEncodeError as error:
                 return False, f"{error}"
 
 

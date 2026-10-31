@@ -11,17 +11,20 @@ def main() -> None:
     file_name = sys.argv[1]
     print(f"Accessing file '{file_name}'")
 
+    reader = None
     try:
-        with open(file_name, mode="r", encoding="utf-8") as reader:
-            print("-" * 3)
-            for line in reader:
-                print(line, end="")
-            print("-" * 3)
-    except FileNotFoundError as error:
+        reader = open(file_name, mode="r", encoding="utf-8")
+        print("-" * 3)
+        for line in reader:
+            print(line, end="")
+        print("-" * 3)
+    except OSError as error:
         print(f"Error opening file '{file_name}': {error}")
-    except PermissionError as error:
+    except UnicodeDecodeError as error:
         print(f"Error opening file '{file_name}': {error}")
     finally:
+        if reader is not None:
+            reader.close()
         print(f"File '{file_name}' closed.")
 
 
