@@ -24,3 +24,4 @@ General Python file input/output concepts from Real Python: file concepts, openi
 | [dos2unix Example](wiki/python-file-io/dos2unix-example.md) | Full dos2unix-like tool converting CRLF to LF line endings | 2026-10-30 |
 | [Tips and Tricks](wiki/python-file-io/tips-tricks.md) | __file__, appending, two files at once, custom context manager | 2026-10-30 |
 | [Standard Libraries](wiki/python-file-io/standard-libraries.md) | Built-in and third-party libraries for common file types | 2026-10-30 |
+| [Printing to stderr and stdout](wiki/python-file-io/stderr-stdout-printing.md) | print(), sys.stdout, sys.stderr, sys.stdin, logging.warning | 2026-10-31 |
