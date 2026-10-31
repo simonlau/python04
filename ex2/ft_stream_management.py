@@ -18,9 +18,9 @@ def read_file(file_name: str) -> list[str] | None:
                 print(line, end="")
             print("-" * 3)
             return lines
-    except FileNotFoundError as error:
+    except OSError as error:
         print_error(f"Error opening file '{file_name}': {error}")
-    except PermissionError as error:
+    except UnicodeDecodeError as error:
         print_error(f"Error opening file '{file_name}': {error}")
     finally:
         print(f"File '{file_name}' closed.")
@@ -54,12 +54,14 @@ def main() -> None:
 
     try:
         print(f"Saving data to '{new_file_name}'")
-        with open(new_file_name, "w") as writer:
+        with open(new_file_name, mode="w", encoding="utf-8") as writer:
             print("-" * 3)
             writer.writelines(lines)
             print("-" * 3)
-    except PermissionError as error:
+    except OSError as error:
         print_error(f"Error opening file '{new_file_name}': {error}")
+    except UnicodeDecodeError as error:
+        print_error(f"Error opening file '{file_name}': {error}")
     finally:
         print(f"Data saved in file '{new_file_name}'.")
 
