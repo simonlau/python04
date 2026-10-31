@@ -26,3 +26,4 @@ General Python file input/output concepts from Real Python: file concepts, openi
 | [Standard Libraries](wiki/python-file-io/standard-libraries.md) | Built-in and third-party libraries for common file types | 2026-10-30 |
 | [Printing to stderr and stdout](wiki/python-file-io/stderr-stdout-printing.md) | print(), sys.stdout, sys.stderr, sys.stdin, logging.warning | 2026-10-31 |
 | [sys.stdout.flush()](wiki/python-file-io/sys-stdout-flush.md) | Buffered stdout, flushing with sys.stdout.flush() and print flush parameter | 2026-10-31 |
+| [Context Managers and the with Statement](wiki/python-file-io/context-manager-with-statement.md) | with statement, context manager protocol, custom context managers, async with | 2026-10-31 |

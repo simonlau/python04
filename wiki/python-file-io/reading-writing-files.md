@@ -1,8 +1,8 @@
 # Reading and Writing Files in Python
 
-> Sources: Real Python, James Mertz, 2019-02-20
-> Raw: [2026-10-30-reading-and-writing-files-in-python](../../raw/python-file-io/2026-10-30-reading-and-writing-files-in-python.md)
-> Updated: 2026-10-30
+> Sources: Real Python, James Mertz, 2019-02-20; Real Python, Leodanis Pozo Ramos, 2026-10-25
+> Raw: [2026-10-30-reading-and-writing-files-in-python](../../raw/python-file-io/2026-10-30-reading-and-writing-files-in-python.md); [2026-10-31-realpython-python-with-statement](../../raw/python-file-io/2026-10-31-realpython-python-with-statement.md)
+> Updated: 2026-10-31
 
 ## Overview
 
@@ -144,3 +144,4 @@ A `.png` header is 8 bytes:
 - [Standard Libraries](standard-libraries.md)
 - [Vault Security](../data-archivist/vault-security.md)
 - [Ancient Text Recovery](../data-archivist/ancient-text-recovery.md)
+- [Context Managers and the with Statement](context-manager-with-statement.md)

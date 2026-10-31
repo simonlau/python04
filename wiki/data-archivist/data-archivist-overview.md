@@ -1,8 +1,8 @@
 # Data Archivist Project Overview
 
-> Sources: Data Archivist project (python04), 2026-10-30; Real Python, James Mertz, 2019-02-20
-> Raw: [2026-10-30-data-archivist-python04](../../raw/data-archivist/2026-10-30-data-archivist-python04.md); [2026-10-30-reading-and-writing-files-in-python](../../raw/python-file-io/2026-10-30-reading-and-writing-files-in-python.md)
-> Updated: 2026-10-30
+> Sources: Data Archivist project (python04), 2026-10-30; Real Python, James Mertz, 2019-02-20; Real Python, Leodanis Pozo Ramos, 2026-10-25
+> Raw: [2026-10-30-data-archivist-python04](../../raw/data-archivist/2026-10-30-data-archivist-python04.md); [2026-10-30-reading-and-writing-files-in-python](../../raw/python-file-io/2026-10-30-reading-and-writing-files-in-python.md); [2026-10-31-realpython-python-with-statement](../../raw/python-file-io/2026-10-31-realpython-python-with-statement.md)
+> Updated: 2026-10-31
 
 ## Overview
 
@@ -19,6 +19,8 @@ Topics covered:
 - Git-based submission
 
 Related general Python file I/O concepts from Real Python: file paths, line endings (CR+LF vs LF), character encodings (ASCII, Unicode/UTF-8), file modes (`'r'`, `'w'`, `'rb'`, `'wb'`, `'a'`), file object types (`TextIOWrapper`, `BufferedReader`, `FileIO`), reading methods (`.read()`, `.readline()`, `.readlines()`), writing methods (`.write()`, `.writelines()`), and working with bytes.
+
+The `with` statement is part of the context manager protocol (`.__enter__()` / `.__exit__()`), which automates resource setup and teardown and prevents resource leaks such as unclosed files. Custom context managers can be written as classes or with `contextlib.contextmanager`, and an asynchronous variant exists as `async with`.
 
 ## Rules
 
@@ -38,3 +40,4 @@ Turn in the assignment to the assigned Git repository. Only work inside the repo
 - [Stream Management](stream-management.md)
 - [Vault Security](vault-security.md)
 - [Reading and Writing Files in Python](../python-file-io/reading-writing-files.md)
+- [Context Managers and the with Statement](../python-file-io/context-manager-with-statement.md)
