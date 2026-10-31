@@ -23,3 +23,9 @@
 - Updated: Stream Management
 
 ## [2026-10-31] lint | 1 issue found, 0 auto-fixed
+
+## [2026-10-31] ingest | sys.stdout.flush()
+- Disposition: New
+- Raw: raw/python-file-io/2026-10-31-geeksforgeeks-sys-stdout-flush.md
+
+## [2026-10-31] lint | 1 issue found, 0 auto-fixed
