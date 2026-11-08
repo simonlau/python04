@@ -13,7 +13,8 @@ def main() -> None:
 
     reader = None
     try:
-        reader = open(file_name, mode="r", encoding="utf-8")
+        # ruff:ignore[builtin-open, open-file-with-context-handler]
+        reader = open(file_name, encoding="utf-8")
         print("-" * 3)
         for line in reader:
             print(line, end="")

@@ -19,8 +19,9 @@ def secure_archive(
     match action:
         case "read":
             try:
-                with open(file_name, mode="r", encoding="utf-8") as reader:
-                    lines = [line for line in reader]
+                # ruff:ignore[builtin-open]
+                with open(file_name, encoding="utf-8") as reader:
+                    lines = list(reader)
                     return True, "".join(lines)
             except OSError as error:
                 return False, f"{error}"
@@ -28,13 +29,15 @@ def secure_archive(
                 return False, f"{error}"
         case "write":
             try:
+                # ruff:ignore[builtin-open]
                 with open(file_name, mode="w", encoding="utf-8") as writer:
                     writer.writelines([content])
-                return True, "Content successfully written to file"
             except OSError as error:
                 return False, f"{error}"
             except UnicodeEncodeError as error:
                 return False, f"{error}"
+            else:
+                return True, "Content successfully written to file"
 
 
 def main() -> None:

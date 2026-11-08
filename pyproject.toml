@@ -38,6 +38,7 @@ ignore = [
     "missing-trailing-comma",
     "single-line-implicit-string-concatenation",
     "missing-copyright-notice",
+    "compare-to-empty-string",
     "print",
 ]
 

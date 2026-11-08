@@ -11,17 +11,19 @@ def read_file(file_name: str) -> list[str] | None:
     print(f"Accessing file '{file_name}'")
     reader = None
     try:
-        reader = open(file_name, mode="r", encoding="utf-8")
+        # ruff:ignore[builtin-open, open-file-with-context-handler]
+        reader = open(file_name, encoding="utf-8")
         print("-" * 3)
-        lines = [line for line in reader]
+        lines = list(reader)
         for line in lines:
             print(line, end="")
         print("-" * 3)
-        return lines
     except OSError as error:
         print_error(f"Error opening file '{file_name}': {error}")
     except UnicodeDecodeError as error:
         print_error(f"Error opening file '{file_name}': {error}")
+    else:
+        return lines
     finally:
         if reader is not None:
             reader.close()
@@ -55,6 +57,7 @@ def main() -> None:
     writer = None
     try:
         print(f"Saving data to '{new_file_name}'")
+        # ruff:ignore[builtin-open, open-file-with-context-handler]
         writer = open(new_file_name, mode="w", encoding="utf-8")
         print("-" * 3)
         writer.writelines(lines)
