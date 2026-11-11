@@ -2,6 +2,8 @@
 
 import sys
 
+num_dashes = 3
+
 
 def print_error(msg: str) -> None:
     print(f"[STDERR] {msg}", file=sys.stderr)
@@ -13,14 +15,12 @@ def read_file(file_name: str) -> list[str] | None:
     try:
         # ruff:ignore[builtin-open, open-file-with-context-handler]
         reader = open(file_name, encoding="utf-8")
-        print("-" * 3)
+        print("-" * num_dashes)
         lines = list(reader)
         for line in lines:
             print(line, end="")
-        print("-" * 3)
-    except OSError as error:
-        print_error(f"Error opening file '{file_name}': {error}")
-    except UnicodeDecodeError as error:
+        print("-" * num_dashes)
+    except (OSError, UnicodeDecodeError) as error:
         print_error(f"Error opening file '{file_name}': {error}")
     else:
         return lines
@@ -41,12 +41,12 @@ def main() -> None:
     lines = read_file(file_name)
     if lines is None:
         return
-    lines = [line[:-1] + "#\n" for line in lines]
+    output = "#\n".join(x.rstrip("\n") for x in lines)
     print("Transform data:")
-    print("-" * 3)
-    for line in lines:
-        print(line, end="")
-    print("-" * 3)
+    print("-" * num_dashes)
+    print(output)
+    # for line in lines:
+    print("-" * num_dashes)
 
     print("Enter new file name (or empty):", end="", flush=True)
     new_file_name = sys.stdin.readline().rstrip("\n")
@@ -59,13 +59,11 @@ def main() -> None:
         print(f"Saving data to '{new_file_name}'")
         # ruff:ignore[builtin-open, open-file-with-context-handler]
         writer = open(new_file_name, mode="w", encoding="utf-8")
-        print("-" * 3)
-        writer.writelines(lines)
-        print("-" * 3)
-    except OSError as error:
-        print_error(f"Error opening file '{new_file_name}': {error}")
-    except UnicodeEncodeError as error:
-        print_error(f"Error opening file '{new_file_name}': {error}")
+        print("-" * num_dashes)
+        _ = writer.write(output)
+        print("-" * num_dashes)
+    except (OSError, UnicodeEncodeError) as error:
+        print(f"Error opening file '{file_name}': {error}")
     finally:
         if writer is not None:
             writer.close()

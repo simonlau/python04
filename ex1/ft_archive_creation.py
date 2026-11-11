@@ -2,6 +2,8 @@
 
 import sys
 
+num_dashes = 3
+
 
 def read_file(file_name: str) -> list[str] | None:
     print(f"Accessing file '{file_name}'")
@@ -9,14 +11,12 @@ def read_file(file_name: str) -> list[str] | None:
     try:
         # ruff:ignore[builtin-open, open-file-with-context-handler]
         reader = open(file_name, encoding="utf-8")
-        print("-" * 3)
+        print("-" * num_dashes)
         lines = list(reader)
         for line in lines:
             print(line, end="")
-        print("-" * 3)
-    except OSError as error:
-        print(f"Error opening file '{file_name}': {error}")
-    except UnicodeDecodeError as error:
+        print("-" * num_dashes)
+    except (OSError, UnicodeDecodeError) as error:
         print(f"Error opening file '{file_name}': {error}")
     else:
         return lines
@@ -39,10 +39,10 @@ def main() -> None:
         return
     lines = [line[:-1] + "#\n" for line in lines]
     print("Transform data:")
-    print("-" * 3)
+    print("-" * num_dashes)
     for line in lines:
         print(line, end="")
-    print("-" * 3)
+    print("-" * num_dashes)
 
     new_file_name = input("Enter new file name (or empty):").strip()
     if new_file_name == "":
@@ -57,9 +57,7 @@ def main() -> None:
         print("-" * 3)
         writer.writelines(lines)
         print("-" * 3)
-    except OSError as error:
-        print(f"Error opening file '{new_file_name}': {error}")
-    except UnicodeEncodeError as error:
+    except (OSError, UnicodeEncodeError) as error:
         print(f"Error opening file '{new_file_name}': {error}")
     finally:
         if writer is not None:

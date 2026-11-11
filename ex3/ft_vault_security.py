@@ -23,19 +23,15 @@ def secure_archive(
                 with open(file_name, encoding="utf-8") as reader:
                     lines = list(reader)
                     return True, "".join(lines)
-            except OSError as error:
-                return False, f"{error}"
-            except UnicodeDecodeError as error:
-                return False, f"{error}"
+            except (OSError, UnicodeDecodeError) as error:
+                return False, str(error)
         case "write":
             try:
                 # ruff:ignore[builtin-open]
                 with open(file_name, mode="w", encoding="utf-8") as writer:
                     writer.writelines([content])
-            except OSError as error:
-                return False, f"{error}"
-            except UnicodeEncodeError as error:
-                return False, f"{error}"
+            except (OSError, UnicodeEncodeError) as error:
+                return False, str(error)
             else:
                 return True, "Content successfully written to file"
 
