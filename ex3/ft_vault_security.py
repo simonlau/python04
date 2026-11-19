@@ -2,9 +2,7 @@
 
 from typing import Literal, TypeAlias
 
-Read: TypeAlias = Literal["read"]
-Write: TypeAlias = Literal["write"]
-Action: TypeAlias = Read | Write
+Action: TypeAlias = Literal["read", "write"]
 
 Content: TypeAlias = str
 Error: TypeAlias = str

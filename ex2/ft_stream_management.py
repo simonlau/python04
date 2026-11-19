@@ -50,7 +50,7 @@ def main() -> None:
 
     print("Enter new file name (or empty):", end="", flush=True)
     new_file_name = sys.stdin.readline().rstrip("\n")
-    if new_file_name == "":
+    if not new_file_name:
         print("Not saving data")
         return
 

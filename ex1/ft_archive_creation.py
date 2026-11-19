@@ -45,7 +45,7 @@ def main() -> None:
     print("-" * num_dashes)
 
     new_file_name = input("Enter new file name (or empty):").strip()
-    if new_file_name == "":
+    if not new_file_name:
         print("Not saving data")
         return
 
