@@ -17,8 +17,8 @@ The `__file__` attribute is a special attribute of modules, similar to `__name__
 To append to a file or start writing at the end of an already populated file, use the `'a'` character for the `mode` argument:
 
 ```python
-with open('dog_breeds.txt', 'a') as a_writer:
-    a_writer.write('\nBeagle')
+with open("dog_breeds.txt", "a") as a_writer:
+    a_writer.write("\nBeagle")
 ```
 
 The beginning of the file stays unchanged and `Beagle` is added to the end.
@@ -28,9 +28,9 @@ The beginning of the file stays unchanged and `Beagle` is added to the end.
 You can read a file and write to another file at the same time:
 
 ```python
-d_path = 'dog_breeds.txt'
-d_r_path = 'dog_breeds_reversed.txt'
-with open(d_path, 'r') as reader, open(d_r_path, 'w') as writer:
+d_path = "dog_breeds.txt"
+d_r_path = "dog_breeds_reversed.txt"
+with open(d_path, "r") as reader, open(d_r_path, "w") as writer:
     dog_breeds = reader.readlines()
     writer.writelines(reversed(dog_breeds))
 ```
@@ -40,7 +40,7 @@ with open(d_path, 'r') as reader, open(d_r_path, 'w') as writer:
 For finer control of the file object, place it inside a custom class and add `__enter__` and `__exit__` magic methods to create a context manager:
 
 ```python
-class my_file_reader():
+class my_file_reader:
     def __init__(self, file_path):
         self.__path = file_path
         self.__file_object = None
@@ -56,7 +56,7 @@ class my_file_reader():
 Use it similarly to the `open()` built-in:
 
 ```python
-with my_file_reader('dog_breeds.txt') as reader:
+with my_file_reader("dog_breeds.txt") as reader:
     # Perform custom class operations
     pass
 ```

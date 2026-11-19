@@ -19,6 +19,7 @@ This file handle receives error information from the user program. The Standard 
 ```python
 import sys
 
+
 def print_to_stderr(*a):
 
     # Here a is the array holding the objects
@@ -48,10 +49,10 @@ A built-in Python package tool called `logging.warning` enables publishing statu
 ```python
 import logging
 
-logging.basicConfig(format='%(message)s')
+logging.basicConfig(format="%(message)s")
 log = logging.getLogger(__name__)
-log.warning('Error: Hello World')
-print('GeeksforGeeks')
+log.warning("Error: Hello World")
+print("GeeksforGeeks")
 ```
 
 Output:
@@ -72,11 +73,13 @@ stdout in Python is similar to sys.stdin, but it directly displays anything writ
 ```python
 import sys
 
+
 def print_to_stdout(*a):
 
     # Here a is the array holding the objects
     # passed as the argument of the function
     print(*a, file=sys.stdout)
+
 
 print_to_stdout("Hello World")
 ```
@@ -86,7 +89,7 @@ print_to_stdout("Hello World")
 Python `print()` function prints the message to the screen or any other standard output device. In the `print()` function, it requires an empty parenthesis at the end that tells Python to execute the function rather than calling it by name.
 
 ```python
-print( "Hello GeeksforGeeks" )
+print("Hello GeeksforGeeks")
 ```
 
 Output:

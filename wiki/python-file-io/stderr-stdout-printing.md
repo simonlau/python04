@@ -25,9 +25,11 @@ In Python, `print()` writes text to `sys.stdout`, `input()` reads from `sys.stdi
 ```python
 import sys
 
+
 def print_to_stderr(*a):
     # a is the array holding the objects passed as the argument
     print(*a, file=sys.stderr)
+
 
 print_to_stderr("Hello World")
 ```
@@ -51,10 +53,10 @@ A built-in Python package tool that enables publishing status messages to files 
 ```python
 import logging
 
-logging.basicConfig(format='%(message)s')
+logging.basicConfig(format="%(message)s")
 log = logging.getLogger(__name__)
-log.warning('Error: Hello World')
-print('GeeksforGeeks')
+log.warning("Error: Hello World")
+print("GeeksforGeeks")
 ```
 
 Output:
@@ -71,8 +73,10 @@ GeeksforGeeks
 ```python
 import sys
 
+
 def print_to_stdout(*a):
     print(*a, file=sys.stdout)
+
 
 print_to_stdout("Hello World")
 ```
@@ -80,7 +84,7 @@ print_to_stdout("Hello World")
 ### Method 2: `print()`
 
 ```python
-print( "Hello GeeksforGeeks" )
+print("Hello GeeksforGeeks")
 ```
 
 Output:

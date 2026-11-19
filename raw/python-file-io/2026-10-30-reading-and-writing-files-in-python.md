@@ -73,7 +73,7 @@ ASCII is actually a subset of Unicode (UTF-8), meaning that ASCII and Unicode sh
 When you want to work with a file, the first thing to do is to open it. This is done by invoking the `open()` built-in function. `open()` has a single required argument that is the path to the file. `open()` has a single return, the file object:
 
 ```python
-file = open('dog_breeds.txt')
+file = open("dog_breeds.txt")
 ```
 
 **Warning:** You should *always* make sure that an open file is properly closed. It’s your responsibility to close the file. In most cases, upon termination of an application or script, a file will be closed eventually. However, there is no guarantee when exactly that will happen. This can lead to unwanted behavior including resource leaks.
@@ -127,9 +127,9 @@ There are three different categories of file objects, each defined in the `io` m
 A text file is the most common file that you’ll encounter:
 
 ```python
-open('abc.txt')
-open('abc.txt', 'r')
-open('abc.txt', 'w')
+open("abc.txt")
+open("abc.txt", "r")
+open("abc.txt", "w")
 ```
 
 With these types of files, `open()` will return a `TextIOWrapper` file object:
@@ -145,8 +145,8 @@ With these types of files, `open()` will return a `TextIOWrapper` file object:
 A buffered binary file type is used for reading and writing binary files:
 
 ```python
-open('abc.txt', 'rb')
-open('abc.txt', 'wb')
+open("abc.txt", "rb")
+open("abc.txt", "wb")
 ```
 
 With these types of files, `open()` will return either a `BufferedReader` or `BufferedWriter` file object:
@@ -165,7 +165,7 @@ With these types of files, `open()` will return either a `BufferedReader` or `Bu
 A raw file type is “generally used as a low-level building-block for binary and text streams.” It is therefore not typically used:
 
 ```python
-open('abc.txt', 'rb', buffering=0)
+open("abc.txt", "rb", buffering=0)
 ```
 
 With these types of files, `open()` will return a `FileIO` file object:
@@ -243,10 +243,10 @@ Writing files — file objects have `.write()` and `.writelines()` methods:
 Example:
 
 ```python
-with open('dog_breeds.txt', 'r') as reader:
+with open("dog_breeds.txt", "r") as reader:
     dog_breeds = reader.readlines()
 
-with open('dog_breeds_reversed.txt', 'w') as writer:
+with open("dog_breeds_reversed.txt", "w") as writer:
     for breed in reversed(dog_breeds):
         writer.write(breed)
 ```
@@ -289,7 +289,7 @@ def str2unix(input_str: str) -> str:
     r"""
     Converts the string from \r\n line endings to \n
     """
-    r_str = input_str.replace('\r\n', '\n')
+    r_str = input_str.replace("\r\n", "\n")
     return r_str
 
 
@@ -297,12 +297,12 @@ def dos2unix(source_file: str, dest_file: str):
     """
     Converts a file that contains Dos like line endings into Unix like
     """
-    with open(source_file, 'r') as reader:
+    with open(source_file, "r") as reader:
         dos_content = reader.read()
 
     unix_content = str2unix(dos_content)
 
-    with open(dest_file, 'w') as writer:
+    with open(dest_file, "w") as writer:
         writer.write(unix_content)
 
 
@@ -310,14 +310,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Script that converts a DOS like file to an Unix like file",
     )
+    parser.add_argument("source_file", help="The location of the source ")
     parser.add_argument(
-        'source_file',
-        help='The location of the source '
-    )
-    parser.add_argument(
-        '--dest_file',
-        help='Location of dest file (default: source_file appended with `_unix`',
-        default=None
+        "--dest_file",
+        help="Location of dest file (default: source_file appended with `_unix`",
+        default=None,
     )
     args = parser.parse_args()
     s_file = args.source_file
@@ -325,7 +322,7 @@ if __name__ == "__main__":
 
     if d_file is None:
         file_path, file_extension = os.path.splitext(s_file)
-        d_file = f'{file_path}_unix{file_extension}'
+        d_file = f"{file_path}_unix{file_extension}"
 
     dos2unix(s_file, d_file)
 ```
@@ -341,8 +338,8 @@ The `__file__` attribute is a special attribute of modules, similar to `__name__
 Sometimes, you may want to append to a file or start writing at the end of an already populated file. This is easily done by using the `'a'` character for the `mode` argument:
 
 ```python
-with open('dog_breeds.txt', 'a') as a_writer:
-    a_writer.write('\nBeagle')
+with open("dog_breeds.txt", "a") as a_writer:
+    a_writer.write("\nBeagle")
 ```
 
 ### Working With Two Files at the Same Time
@@ -350,9 +347,9 @@ with open('dog_breeds.txt', 'a') as a_writer:
 You can read a file and write to another file at the same time:
 
 ```python
-d_path = 'dog_breeds.txt'
-d_r_path = 'dog_breeds_reversed.txt'
-with open(d_path, 'r') as reader, open(d_r_path, 'w') as writer:
+d_path = "dog_breeds.txt"
+d_r_path = "dog_breeds_reversed.txt"
+with open(d_path, "r") as reader, open(d_r_path, "w") as writer:
     dog_breeds = reader.readlines()
     writer.writelines(reversed(dog_breeds))
 ```
@@ -362,7 +359,7 @@ with open(d_path, 'r') as reader, open(d_r_path, 'w') as writer:
 You may need finer control of the file object by placing it inside a custom class. Add `__enter__` and `__exit__` to create a context manager:
 
 ```python
-class my_file_reader():
+class my_file_reader:
     def __init__(self, file_path):
         self.__path = file_path
         self.__file_object = None

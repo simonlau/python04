@@ -43,10 +43,10 @@ sys.stderr.write("Example 3")
 ```python
 import logging
 
-logging.basicConfig(format='%(message)s')
+logging.basicConfig(format="%(message)s")
 log = logging.getLogger(__name__)
-log.warning('Error: Hello World')
-print('GeeksforGeeks')
+log.warning("Error: Hello World")
+print("GeeksforGeeks")
 ```
 
 ## See Also

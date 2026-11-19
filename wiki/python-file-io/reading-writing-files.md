@@ -13,7 +13,7 @@ One of the most common tasks in Python is reading and writing files. Whether it'
 To work with a file, open it with the `open()` built-in function. `open()` has a single required argument — the path to the file — and returns a file object:
 
 ```python
-file = open('dog_breeds.txt')
+file = open("dog_breeds.txt")
 ```
 
 You should always make sure that an open file is properly closed. It's your responsibility to close the file; upon termination of an application or script a file will be closed eventually, but there is no guarantee when. This can lead to unwanted behavior including resource leaks.
@@ -108,10 +108,10 @@ Iterating over each line — the more Pythonic and memory-efficient approach:
 Example — write breeds in reversed order:
 
 ```python
-with open('dog_breeds.txt', 'r') as reader:
+with open("dog_breeds.txt", "r") as reader:
     dog_breeds = reader.readlines()
 
-with open('dog_breeds_reversed.txt', 'w') as writer:
+with open("dog_breeds_reversed.txt", "w") as writer:
     for breed in reversed(dog_breeds):
         writer.write(breed)
 ```

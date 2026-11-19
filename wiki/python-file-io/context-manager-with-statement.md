@@ -248,6 +248,7 @@ The `with` statement also has an asynchronous version, `async with`, for context
 import asyncio
 import aiohttp
 
+
 async def check(url):
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as response:
@@ -483,6 +484,7 @@ To create an asynchronous context manager, define `.__aenter__()` and `.__aexit_
 ```python
 import asyncio
 import aiohttp
+
 
 class AsyncSession:
     def __init__(self, url):

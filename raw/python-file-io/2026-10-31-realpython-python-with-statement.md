@@ -330,6 +330,7 @@ Here's a quick script that implements the required functionality:
 import asyncio
 import aiohttp
 
+
 async def check(url):
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as response:
@@ -337,11 +338,13 @@ async def check(url):
             html = await response.text()
             print(f"{url}: type -> {html[:17].strip()}")
 
+
 async def main():
     await asyncio.gather(
         check("https://realpython.com"),
         check("https://pycoders.com"),
     )
+
 
 asyncio.run(main())
 ```
@@ -678,6 +681,7 @@ To create an asynchronous context manager, you need to define the `.__aenter__()
 import asyncio
 import aiohttp
 
+
 class AsyncSession:
     def __init__(self, url):
         self._url = url
@@ -690,17 +694,20 @@ class AsyncSession:
     async def __aexit__(self, exc_type, exc_value, exc_tb):
         await self.session.close()
 
+
 async def check(url):
     async with AsyncSession(url) as response:
         print(f"{url}: status -> {response.status}")
         html = await response.text()
         print(f"{url}: type -> {html[:17].strip()}")
 
+
 async def main():
     await asyncio.gather(
         check("https://realpython.com"),
         check("https://pycoders.com"),
     )
+
 
 asyncio.run(main())
 ```

@@ -1,0 +1,71 @@
+{
+  "IMPORTS": {
+    "0": {
+      "sys": [
+        "argv"
+      ]
+    },
+    "2": {
+      "math": [
+        "sqrt"
+      ]
+    },
+    "3": {
+      "random": [
+        "randint",
+        "choice"
+      ]
+    },
+    "5": {
+      "typing": []
+    }
+  },
+  "LANGUAGE": {
+    "0": [
+      "name",
+      "constant",
+      "attribute",
+      "index",
+      "f-string",
+      "function call",
+      "if",
+      "def",
+      "return",
+      "=",
+      "+",
+      "-",
+      "*",
+      "/",
+      "|",
+      "<",
+      ">",
+      "<=",
+      ">=",
+      "+=",
+      "==",
+      "while",
+      "import",
+      "len",
+      "print",
+      "int",
+      "str",
+      "float",
+      "list",
+      "list literal",
+      "dict",
+      "dict literal",
+      "set",
+      "set literal",
+      "tuple",
+      "tuple literal"
+    ],
+    "1": [
+      "len",
+      "open"
+    ],
+    "3": [
+      "with"
+    ]
+  },
+  "METHODS": {}
+}
