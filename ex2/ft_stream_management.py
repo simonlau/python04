@@ -1,8 +1,17 @@
 #!/usr/bin/env python3
 
 import sys
+from collections.abc import Iterable
 
-num_dashes = 3
+
+def print_data(data: Iterable[str]) -> None:
+    num_dashes = 3
+    print("-" * num_dashes)
+    print()
+    for line in data:
+        print(line, end="")
+    print()
+    print("-" * num_dashes)
 
 
 def print_error(msg: str) -> None:
@@ -15,11 +24,8 @@ def read_file(file_name: str) -> list[str] | None:
     try:
         # ruff:ignore[builtin-open, open-file-with-context-handler]
         reader = open(file_name, encoding="utf-8")
-        print("-" * num_dashes)
         lines = list(reader)
-        for line in lines:
-            print(line, end="")
-        print("-" * num_dashes)
+        print_data(lines)
     except (OSError, UnicodeDecodeError) as error:
         print_error(f"Error opening file '{file_name}': {error}")
     else:
@@ -41,12 +47,9 @@ def main() -> None:
     lines = read_file(file_name)
     if lines is None:
         return
-    output = "#\n".join(x.rstrip("\n") for x in lines)
+    output = "#\n".join(x.rstrip("\n") for x in lines) + "#"
     print("Transform data:")
-    print("-" * num_dashes)
-    print(output)
-    # for line in lines:
-    print("-" * num_dashes)
+    print_data(output)
 
     print("Enter new file name (or empty):", end="", flush=True)
     new_file_name = sys.stdin.readline().rstrip("\n")
@@ -59,15 +62,14 @@ def main() -> None:
         print(f"Saving data to '{new_file_name}'")
         # ruff:ignore[builtin-open, open-file-with-context-handler]
         writer = open(new_file_name, mode="w", encoding="utf-8")
-        print("-" * num_dashes)
         _ = writer.write(output)
-        print("-" * num_dashes)
+        print(f"Data saved in file '{new_file_name}'.")
     except (OSError, UnicodeEncodeError) as error:
         print(f"Error opening file '{file_name}': {error}")
+        print("Data not saved.")
     finally:
         if writer is not None:
             writer.close()
-        print(f"Data saved in file '{new_file_name}'.")
 
 
 if __name__ == "__main__":

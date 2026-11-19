@@ -38,15 +38,15 @@ def main() -> None:
     print("=== Cyber Archives Security ==")
     print("Using 'secure_archive' to read from a nonexistent file:")
     print(secure_archive("/not/existing/file"))
-
+    print()
     print("Using 'secure_archive' to read from an inaccessible file:")
     print(secure_archive("/etc/master.passwd"))
-
+    print()
     file_name = "../ex2/ancient_fragment.txt"
     print("Using 'secure_archive' to read from a regular file:")
     result, content = secure_archive(file_name)
-    print(result, content)
-
+    print((result, content))
+    print()
     print("Using 'secure_archive' to write previous content to a new file:")
     print(secure_archive(file_name, action="write", content=content))
 

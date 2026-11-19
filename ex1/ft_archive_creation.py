@@ -1,8 +1,21 @@
 #!/usr/bin/env python3
 
 import sys
+from collections.abc import Iterable
 
 num_dashes = 3
+header = "-" * num_dashes
+
+
+def print_data(data: Iterable[str], *, has_header: bool = False) -> None:
+    if has_header:
+        print(header)
+        print()
+    for line in data:
+        print(line, end="")
+    if has_header:
+        print(header)
+        print()
 
 
 def read_file(file_name: str) -> list[str] | None:
@@ -11,11 +24,8 @@ def read_file(file_name: str) -> list[str] | None:
     try:
         # ruff:ignore[builtin-open, open-file-with-context-handler]
         reader = open(file_name, encoding="utf-8")
-        print("-" * num_dashes)
         lines = list(reader)
-        for line in lines:
-            print(line, end="")
-        print("-" * num_dashes)
+        print_data(lines, has_header=True)
     except (OSError, UnicodeDecodeError) as error:
         print(f"Error opening file '{file_name}': {error}")
     else:
@@ -39,10 +49,7 @@ def main() -> None:
         return
     lines = [line[:-1] + "#\n" for line in lines]
     print("Transform data:")
-    print("-" * num_dashes)
-    for line in lines:
-        print(line, end="")
-    print("-" * num_dashes)
+    print_data(lines)
 
     new_file_name = input("Enter new file name (or empty):").strip()
     if not new_file_name:
@@ -54,9 +61,7 @@ def main() -> None:
         print(f"Saving data to '{new_file_name}'")
         # ruff:ignore[builtin-open, open-file-with-context-handler]
         writer = open(new_file_name, mode="w", encoding="utf-8")
-        print("-" * 3)
         writer.writelines(lines)
-        print("-" * 3)
     except (OSError, UnicodeEncodeError) as error:
         print(f"Error opening file '{new_file_name}': {error}")
     finally:
